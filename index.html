@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0; URL='/home'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting to Home</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    a {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+
+    .spinner {
+      margin: 40px auto;
+      width: 50px;
+      height: 50px;
+      border: 6px solid #00ffcc;
+      border-top: 6px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Redirecting to <a href="/home">/home</a>...</h1>
+  <div class="spinner"></div>
+  <p>If you're not redirected automatically, <a href="/home">click here</a>.</p>
+</body>
+</html>
