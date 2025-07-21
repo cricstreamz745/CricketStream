@@ -1,0 +1,27 @@
+[
+  {
+    "title": "India vs Australia",
+    "description": "Its Time For England Vs Australia Come Out After Long Time. Can They Drop Impact On This World Cup",
+    "status": "Live",
+    "poster": "https://i.ibb.co/ksc6rw8X/images-3-17.jpg",
+    "date": "2025-07-21",
+    "time": "14:00",
+    "streams": [
+      { "id": "channel-7", "name": "English HD" },
+      { "id": "channel-4", "name": "Hindi SD" },
+      { "id": "channel-3", "name": "Tamil Fan Cam" }
+    ]
+  },
+  {
+    "title": "England vs Pakistan",
+    "description": "Its Time For England Vs Australia Come Out After Long Time. Can They Drop Impact On This World Cup",
+    "status": "Upcoming",
+    "poster": "https://i.ibb.co/vx2D1jsj/images-3-16.jpg",
+    "date": "2025-07-22",
+    "time": "19:30",
+    "streams": [
+      { "id": "channel-7", "name": "Sky Sports" },
+      { "id": "channel-6", "name": "PTV Sports" }
+    ]
+  }
+]
