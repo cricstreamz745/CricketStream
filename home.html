@@ -640,7 +640,7 @@
                     <i class="far fa-calendar-alt"></i> ${item.date} | <i class="far fa-clock"></i> ${item.time}
                   </p>
                   ${item.streams.map(s => `
-                    <a class="stream-btn" href="/channels/${s.id}.html" target="_blank">
+                    <a class="stream-btn" href="home/${s.id}.html" target="_blank">
                       <i class="fas fa-play"></i> ${s.name}
                     </a>
                   `).join('')}
