@@ -3,234 +3,724 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CricGo</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <title>Live Cricket Streaming | India vs England | CricGo Free HD Matches</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Watch free live cricket streaming of India vs England, IPL, PSL and all international matches in HD quality on CricGo. Best platform for live cricket scores and streaming.">
+  <meta name="keywords" content="live cricket streaming, india vs england live, free cricket streaming, ipl live, psl live, cricket scores, cricgo, watch cricket online">
+  <meta name="author" content="CricGo">
+  <meta property="og:title" content="Live Cricket Streaming | India vs England | CricGo Free HD Matches">
+  <meta property="og:description" content="Watch free live cricket streaming of India vs England, IPL, PSL and all international matches in HD quality">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cricgo.pages.dev">
+  <meta property="og:image" content="https://i.ibb.co/MDzftyBs/Picsart-25-07-21-21-00-31-910.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Live Cricket Streaming | CricGo Free HD Matches">
+  <meta name="twitter:description" content="Watch free live cricket streaming of all international matches in HD quality">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="https://i.ibb.co/MDzftyBs/Picsart-25-07-21-21-00-31-910.png" type="image/png">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/MDzftyBs/Picsart-25-07-21-21-00-31-910.png">
+  <link rel="canonical" href="https://cricgo.pages.dev">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #ff5e00;
+      --primary-dark: #e05300;
+      --secondary: #00a8ff;
+      --dark: #0a0a0a;
+      --darker: #050505;
+      --light: #ffffff;
+      --gray: #aaaaaa;
+      --dark-gray: #333333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #fff;
+      background: var(--darker);
+      color: var(--light);
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      overflow-x: hidden;
     }
 
-    .swiper {
-      width: 100%;
-      padding: 20px 0;
+    @font-face {
+      font-family: 'Poppins';
+      src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
     }
 
-    .swiper-slide {
+    .header {
+      background: linear-gradient(135deg, var(--dark), var(--darker));
+      padding: 1.5rem;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
       position: relative;
-      width: 85%;
-      height: 0;
-      padding-bottom: 56.25%;
-      background-size: cover;
-      background-position: center;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .poster-overlay {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-    }
-
-    .poster-title {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .poster-sub {
-      font-size: 14px;
-      color: #ccc;
-    }
-
-    .poster-btn {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background: #00bcd4;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .desc-popup {
-      position: absolute;
-      bottom: 110%;
-      left: 10px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 10px;
-      font-size: 13px;
-      color: #fff;
-      border-radius: 8px;
-      display: none;
       z-index: 10;
-    }
-
-    #streamModal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
+      display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    #streamModal .modal-content {
-      background: #222;
-      color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 90%;
-      width: 320px;
+    .logo {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .stream-button {
-      background: #00bcd4;
+    .logo img {
+      height: 100%;
+      object-fit: contain;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0;
+      font-weight: 600;
+      font-size: 2rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+
+    .live-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff0000;
       color: white;
-      border: none;
-      padding: 8px 12px;
-      margin: 5px 0;
-      width: 100%;
-      border-radius: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      animation: pulse 1.5s infinite;
+      z-index: 2;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    .poster-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .poster-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
       cursor: pointer;
-      font-size: 14px;
+      background: var(--dark);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .poster-card.live:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 94, 0, 0.3);
+    }
+
+    .poster-card.upcoming {
+      cursor: default;
+      filter: grayscale(30%);
+      opacity: 0.9;
+    }
+
+    .poster-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+      z-index: 1;
+    }
+
+    .poster-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .poster-card.live:hover img {
+      transform: scale(1.05);
+    }
+
+    .poster-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      z-index: 2;
+    }
+
+    .poster-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .poster-sub {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .poster-sub i {
+      font-size: 0.7rem;
+      color: var(--primary);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .overlay.show {
+      opacity: 1;
+    }
+
+    .overlay-content {
+      background: linear-gradient(145deg, var(--dark), var(--darker));
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .overlay.show .overlay-content {
+      transform: scale(1);
+    }
+
+    .overlay-content::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,94,0,0.1) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .overlay-content h3 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: var(--light);
+      font-size: 1.5rem;
+    }
+
+    .stream-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      margin: 12px auto;
+      padding: 14px 25px;
+      border-radius: 8px;
+      color: var(--light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 500;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .stream-btn:hover {
+      background: rgba(255, 94, 0, 0.2);
+      border-color: rgba(255, 94, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .stream-btn i {
+      color: var(--primary);
+    }
+
+    .close-btn {
+      margin-top: 25px;
+      color: var(--gray);
+      cursor: pointer;
+      transition: color 0.3s ease;
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+
+    .close-btn:hover {
+      color: var(--primary);
+    }
+
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 94, 0, 0.2);
+      border-radius: 50%;
+      border-top-color: var(--primary);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 40px;
+      color: var(--gray);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: linear-gradient(180deg, var(--darker), #000);
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      color: var(--light);
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: block;
+    }
+
+    .footer-column a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-bottom a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--secondary);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: var(--gray);
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Premium features */
+    .featured-match {
+      grid-column: 1 / -1;
+      aspect-ratio: 21 / 9;
+    }
+
+    .featured-match .poster-info {
+      padding: 30px;
+    }
+
+    .featured-match .poster-title {
+      font-size: 1.8rem;
+    }
+
+    .featured-match .poster-sub {
+      font-size: 1.1rem;
+    }
+
+    .countdown {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      z-index: 2;
+    }
+
+    .upcoming-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 15px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .breadcrumb span {
+      color: var(--gray);
+      margin: 0 5px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .poster-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+
+      .featured-match {
+        aspect-ratio: 16 / 9;
+      }
+
+      .featured-match .poster-title {
+        font-size: 1.3rem;
+      }
+
+      .featured-match .poster-sub {
+        font-size: 0.9rem;
+      }
+
+      .overlay-content {
+        padding: 20px;
+      }
+
+      .stream-btn {
+        width: 100%;
+        padding: 12px 20px;
+      }
+      
+      .logo {
+        height: 50px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
-  <h2 style="text-align:center; padding-top:10px;">🔥 Live & Upcoming Matches</h2>
-  <div class="swiper">
-    <div class="swiper-wrapper" id="posterContainer"></div>
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="#">Home</a>
+    <span>/</span>
+    <a href="#">Live Cricket</a>
+    <span>/</span>
+    <a href="#">India vs England</a>
   </div>
 
-  <!-- Stream Modal -->
-  <div id="streamModal">
-    <div class="modal-content">
-      <h3>Select Stream</h3>
-      <div id="channelList"></div>
-      <button onclick="closeModal()" style="margin-top:10px; background:red; border:none; padding:6px 12px; color:white; border-radius:6px;">Close</button>
+  <header class="header">
+    <div class="logo">
+      <img src="https://i.ibb.co/MDzftyBs/Picsart-25-07-21-21-00-31-910.png" alt="CricGo - Free Live Cricket Streaming">
+    </div>
+  </header>
+
+  <h2>Live Cricket Matches</h2>
+  
+  <div class="poster-container" id="posters">
+    <div class="loading">
+      <div class="spinner"></div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <div class="overlay" id="overlay">
+    <div class="overlay-content" id="overlay-content">
+      <!-- Dynamic Content Goes Here -->
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>CricGo</h3>
+        <p>CricGo Is A Premium Site That Broadcast Matches From All Over The World For Free.Dont Need To Pay Anymore For Sports.We Are Doing All Things For You</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Popular Matches</h3>
+        <ul>
+          <li><a href="#">India vs England Live</a></li>
+          <li><a href="#">IPL 2023 Live</a></li>
+          <li><a href="#">PSL Live Streaming</a></li>
+          <li><a href="#">T20 World Cup</a></li>
+          <li><a href="#">Ashes Series</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Live Scores</a></li>
+          <li><a href="#">Upcoming Matches</a></li>
+          <li><a href="#">Cricket News</a></li>
+          <li><a href="#">Team Rankings</a></li>
+          <li><a href="#">Player Stats</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Information</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">DMCA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 <a href="#">CricGo</a> - Free Live Cricket Streaming Platform. All rights reserved.</p>
+      <p>This website does not host any streams. We provide links to available streams around the world.</p>
+    </div>
+  </footer>
+
   <script>
-    const container = document.getElementById('posterContainer');
-    const streamModal = document.getElementById('streamModal');
-    const channelList = document.getElementById('channelList');
+    const postersEl = document.getElementById("posters");
+    const overlay = document.getElementById("overlay");
+    const overlayContent = document.getElementById("overlay-content");
 
-    function openStreamModal(streams) {
-      channelList.innerHTML = '';
-      streams.forEach(stream => {
-        const btn = document.createElement('button');
-        btn.className = 'stream-button';
-        btn.textContent = stream.name;
-        btn.onclick = () => {
-          window.location.href = `/home/${stream.id}`;
-        };
-        channelList.appendChild(btn);
-      });
-      streamModal.style.display = 'flex';
+    // Simulate loading delay for demo purposes
+    setTimeout(() => {
+      fetch("https://cricgo.pages.dev/main-poster.json")
+        .then(res => res.json())
+        .then(data => {
+          postersEl.innerHTML = '';
+          
+          data.forEach((item, index) => {
+            const card = document.createElement("div");
+            card.className = `poster-card ${item.status === 'Live' ? 'live' : 'upcoming'}`;
+            if (index === 0) card.classList.add("featured-match");
+            
+            card.innerHTML = `
+              ${item.status === 'Live' ? '<div class="live-badge"><i class="fas fa-circle"></i> Live</div>' : ''}
+              ${item.status === 'Upcoming' ? `<div class="countdown"><i class="far fa-clock"></i> Starts in 2h 15m</div>` : ''}
+              <img src="${item.poster}" alt="${item.title}" loading="lazy">
+              <div class="poster-info">
+                <div class="poster-title">${item.title}</div>
+                <div class="poster-sub">
+                  <span><i class="far fa-calendar-alt"></i> ${item.date}</span>
+                  <span><i class="far fa-clock"></i> ${item.time}</span>
+                  <span><i class="fas fa-info-circle"></i> ${item.status}</span>
+                </div>
+              </div>
+              ${item.status === 'Upcoming' ? `
+                <div class="upcoming-overlay">
+                  <div>
+                    <i class="far fa-clock" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <div>Match starts soon</div>
+                    <div style="font-size: 0.9rem; margin-top: 5px;">${item.time}, ${item.date}</div>
+                  </div>
+                </div>
+              ` : ''}
+            `;
+
+            if (item.status === 'Live') {
+              card.addEventListener("click", () => {
+                overlayContent.innerHTML = `
+                  <h3>${item.title}</h3>
+                  <p style="margin-bottom: 20px; color: var(--gray); font-size: 0.9rem;">
+                    <i class="far fa-calendar-alt"></i> ${item.date} | <i class="far fa-clock"></i> ${item.time}
+                  </p>
+                  ${item.streams.map(s => `
+                    <a class="stream-btn" href="/channels/${s.id}.html" target="_blank">
+                      <i class="fas fa-play"></i> ${s.name}
+                    </a>
+                  `).join('')}
+                  <div class="close-btn" onclick="closeOverlay()">
+                    <i class="fas fa-times"></i> Close
+                  </div>
+                `;
+                overlay.style.display = "flex";
+                setTimeout(() => overlay.classList.add("show"), 10);
+              });
+            }
+
+            postersEl.appendChild(card);
+          });
+        })
+        .catch(error => {
+          postersEl.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--gray);">
+              <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 15px; color: var(--primary);"></i>
+              <h3 style="margin-bottom: 10px;">Failed to load content</h3>
+              <p>Please check your internet connection and try again.</p>
+              <button onclick="window.location.reload()" style="margin-top: 20px; background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background 0.3s;">
+                <i class="fas fa-sync-alt"></i> Retry
+              </button>
+            </div>
+          `;
+          console.error(error);
+        });
+    }, 1000);
+
+    function closeOverlay() {
+      overlay.classList.remove("show");
+      setTimeout(() => {
+        overlay.style.display = "none";
+      }, 300);
     }
 
-    function closeModal() {
-      streamModal.style.display = 'none';
+    // Close overlay when clicking outside content
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
+        closeOverlay();
+      }
+    });
+
+    // Close with ESC key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && overlay.style.display === "flex") {
+        closeOverlay();
+      }
+    });
+  </script>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "CricGo",
+      "url": "https://cricgo.pages.dev",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cricgo.pages.dev/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
-
-    fetch('https://cricgo.pages.dev/main-poster.json')
-      .then(res => res.json())
-      .then(data => {
-        data.forEach(match => {
-          const slide = document.createElement('div');
-          slide.className = 'swiper-slide';
-          slide.style.backgroundImage = `url(${match.poster})`;
-
-          const overlay = document.createElement('div');
-          overlay.className = 'poster-overlay';
-
-          const title = document.createElement('div');
-          title.className = 'poster-title';
-          title.textContent = match.title;
-
-          const subtitle = document.createElement('div');
-          subtitle.className = 'poster-sub';
-          subtitle.textContent = match.date + ' • ' + match.time;
-
-          const button = document.createElement('button');
-          button.className = 'poster-btn';
-
-          if (match.status.toLowerCase() === 'live') {
-            button.textContent = '▶ Watch Now';
-            button.onclick = () => openStreamModal(match.streams);
-          } else {
-            button.textContent = '⏳ Upcoming';
-            button.disabled = true;
-
-            const countdown = document.createElement('div');
-            countdown.className = 'poster-sub';
-            countdown.style.marginTop = '6px';
-
-            const matchTime = new Date(`${match.date}T${match.time}:00`);
-            const updateCountdown = () => {
-              const now = new Date();
-              const diff = matchTime - now;
-              if (diff > 0) {
-                const minutes = Math.floor(diff / 60000);
-                countdown.textContent = `Starts in ${minutes} min`;
-              } else {
-                countdown.textContent = 'Starting soon...';
-              }
-            };
-
-            updateCountdown();
-            setInterval(updateCountdown, 10000);
-            overlay.appendChild(countdown);
-          }
-
-          // Long press description
-          const desc = document.createElement('div');
-          desc.className = 'desc-popup';
-          desc.textContent = match.description;
-
-          let pressTimer;
-          slide.addEventListener('mousedown', () => {
-            pressTimer = setTimeout(() => {
-              desc.style.display = 'block';
-              setTimeout(() => desc.style.display = 'none', 4000);
-            }, 2000);
-          });
-          slide.addEventListener('mouseup', () => clearTimeout(pressTimer));
-          slide.addEventListener('mouseleave', () => clearTimeout(pressTimer));
-          slide.addEventListener('touchstart', () => {
-            pressTimer = setTimeout(() => {
-              desc.style.display = 'block';
-              setTimeout(() => desc.style.display = 'none', 4000);
-            }, 2000);
-          });
-          slide.addEventListener('touchend', () => clearTimeout(pressTimer));
-
-          overlay.appendChild(title);
-          overlay.appendChild(subtitle);
-          overlay.appendChild(button);
-          slide.appendChild(desc);
-          slide.appendChild(overlay);
-          container.appendChild(slide);
-        });
-
-        new Swiper('.swiper', {
-          slidesPerView: 1.1,
-          spaceBetween: 10,
-          freeMode: true,
-        });
-      });
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CricGo",
+      "url": "https://cricgo.pages.dev",
+      "logo": "https://i.ibb.co/MDzftyBs/Picsart-25-07-21-21-00-31-910.png",
+      "sameAs": [
+        "#",
+        "#",
+        "#",
+        "#"
+      ]
+    }
   </script>
 </body>
 </html>
