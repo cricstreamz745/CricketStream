@@ -1,15 +1,15 @@
 [
   {
-    "title": "India vs Australia",
+    "title": "India vs England",
     "description": "Its Time For England Vs Australia Come Out After Long Time. Can They Drop Impact On This World Cup",
     "status": "Live",
     "poster": "https://i.ibb.co/ksc6rw8X/images-3-17.jpg",
     "date": "2025-07-21",
     "time": "14:00",
     "streams": [
-      { "id": "channel-7", "name": "English HD" },
-      { "id": "channel-4", "name": "Hindi SD" },
-      { "id": "channel-3", "name": "Tamil Fan Cam" }
+      { "id": "channel-5", "name": "Hindi" },
+      { "id": "channel-6", "name": "English" },
+      { "id": "channel-4", "name": "Willow Sports" }
     ]
   },
   {
